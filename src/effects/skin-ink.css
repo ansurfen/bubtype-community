@@ -1,0 +1,180 @@
+/** Shared typed-caption ink gradients for Overlay + practice. */
+.ink-sakura,
+.ink-snow,
+.ink-maple,
+.ink-leaf,
+.ink-heart,
+.ink-star,
+.ink-aurora,
+.ink-sunset,
+.ink-ocean,
+.ink-candy,
+.ink-neon,
+.ink-slime,
+.ink-flame,
+.ink-soul {
+  display: inline-block;
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  animation: bubtype-ink-flow 7s ease-in-out infinite;
+}
+
+.ink-sakura {
+  background-image: linear-gradient(
+    105deg,
+    #ffb7d5 0%,
+    #fff0f6 38%,
+    #ff7eb3 68%,
+    #ff9ec8 100%
+  );
+}
+.ink-snow {
+  background-image: linear-gradient(
+    105deg,
+    #e8f6ff 0%,
+    #ffffff 36%,
+    #9fd4ff 68%,
+    #c9e9ff 100%
+  );
+}
+.ink-maple {
+  background-image: linear-gradient(
+    105deg,
+    #ffd27a 0%,
+    #ff9a3c 40%,
+    #ff5a2e 72%,
+    #ffb347 100%
+  );
+}
+.ink-leaf {
+  background-image: linear-gradient(
+    105deg,
+    #d4f18d 0%,
+    #7ed957 40%,
+    #3aa03a 72%,
+    #b8e86a 100%
+  );
+}
+.ink-heart {
+  background-image: linear-gradient(
+    105deg,
+    #ffc0d9 0%,
+    #ffffff 34%,
+    #ff5f9a 70%,
+    #ff8fbf 100%
+  );
+}
+.ink-star {
+  background-image: linear-gradient(
+    105deg,
+    #fff4c2 0%,
+    #ffffff 34%,
+    #ffc933 68%,
+    #ff9a1f 100%
+  );
+}
+.ink-aurora {
+  background-image: linear-gradient(
+    105deg,
+    #f9a8d4 0%,
+    #c4b5fd 28%,
+    #93c5fd 52%,
+    #6ee7b7 76%,
+    #fde68a 100%
+  );
+}
+.ink-sunset {
+  background-image: linear-gradient(
+    105deg,
+    #fb7185 0%,
+    #f97316 35%,
+    #e879f9 70%,
+    #a855f7 100%
+  );
+}
+.ink-ocean {
+  background-image: linear-gradient(
+    105deg,
+    #22d3ee 0%,
+    #38bdf8 35%,
+    #818cf8 70%,
+    #6366f1 100%
+  );
+}
+.ink-candy {
+  background-image: linear-gradient(
+    105deg,
+    #fda4af 0%,
+    #e9d5ff 35%,
+    #a7f3d0 70%,
+    #fbcfe8 100%
+  );
+}
+.ink-neon {
+  background-image: linear-gradient(
+    105deg,
+    #ff4d6d 0%,
+    #ff8c42 22%,
+    #ffd166 44%,
+    #06d6a0 66%,
+    #4cc9f0 88%,
+    #7b2cbf 100%
+  );
+}
+.ink-slime {
+  background-image: linear-gradient(
+    105deg,
+    #bbf7d0 0%,
+    #86efac 35%,
+    #4ade80 70%,
+    #22c55e 100%
+  );
+}
+.ink-flame {
+  background-image: linear-gradient(
+    105deg,
+    #fff7ed 0%,
+    #fdba74 35%,
+    #f97316 70%,
+    #ef4444 100%
+  );
+}
+.ink-soul {
+  background-image: linear-gradient(
+    105deg,
+    #ecfeff 0%,
+    #67e8f9 35%,
+    #22d3ee 70%,
+    #0891b2 100%
+  );
+}
+
+.ink-sakura.fresh,
+.ink-snow.fresh,
+.ink-maple.fresh,
+.ink-leaf.fresh,
+.ink-heart.fresh,
+.ink-star.fresh,
+.ink-aurora.fresh,
+.ink-sunset.fresh,
+.ink-ocean.fresh,
+.ink-candy.fresh,
+.ink-neon.fresh,
+.ink-slime.fresh,
+.ink-flame.fresh,
+.ink-soul.fresh {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, currentColor 55%, transparent));
+}
+
+@keyframes bubtype-ink-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

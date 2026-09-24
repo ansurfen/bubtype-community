@@ -1,0 +1,22 @@
+{
+  "manifest": {
+    "id": "commute",
+    "title": "通勤路上",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "source": "mock",
+    "lemmaCount": 8,
+    "description": "出行与换乘短句"
+  },
+  "items": [
+    { "text": "Where is the station?", "hint": "车站在哪里？", "kind": "sentence" },
+    { "text": "The train is late.", "hint": "火车晚点了。", "kind": "sentence" },
+    { "text": "Which bus goes downtown?", "hint": "哪路公交去市中心？", "kind": "sentence" },
+    { "text": "I need to change trains.", "hint": "我需要换乘。", "kind": "sentence" },
+    { "text": "Is this the right platform?", "hint": "这是正确的站台吗？", "kind": "sentence" },
+    { "text": "Please mind the gap.", "hint": "请小心空隙。", "kind": "sentence" },
+    { "text": "I missed my stop.", "hint": "我坐过站了。", "kind": "sentence" },
+    { "text": "How long will it take?", "hint": "大概要多久？", "kind": "sentence" }
+  ]
+}

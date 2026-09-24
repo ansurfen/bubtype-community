@@ -1,0 +1,18 @@
+.gloss-layer {
+  width: 100%;
+  height: fit-content;
+  overflow: visible;
+  background: transparent;
+  pointer-events: none;
+}
+
+.gloss-layer .gloss-card {
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 12px;
+  pointer-events: auto;
+}

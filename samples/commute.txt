@@ -1,0 +1,13 @@
+# bubtype-queue/1
+title: 通勤路上
+lang: en
+mode: both
+
+Where is the station? | 车站在哪里？
+The train is late. | 火车晚点了。
+Which bus goes downtown? | 哪路公交去市中心？
+I need to change trains. | 我需要换乘。
+Is this the right platform? | 这是正确的站台吗？
+Please mind the gap. | 请小心空隙。
+I missed my stop. | 我坐过站了。
+How long will it take? | 大概要多久？

@@ -1,0 +1,225 @@
+.feed-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  justify-content: flex-end;
+  background: color-mix(in srgb, #000 36%, transparent);
+}
+
+.feed-sheet {
+  width: min(380px, 92%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 14px 0 0 14px;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: -12px 0 36px color-mix(in srgb, #000 22%, transparent);
+  overflow: hidden;
+  animation: feed-sheet-in 0.22s ease-out;
+}
+
+@keyframes feed-sheet-in {
+  from {
+    transform: translateX(12%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.feed-sheet-head {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+
+.feed-sheet-head h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.feed-sheet-sub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.feed-sheet-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+
+.feed-sheet-refresh {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.feed-sheet-refresh:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.feed-sheet-refresh:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.feed-sheet-close {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  flex: none;
+}
+
+.feed-sheet-close:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.feed-sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 14px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.feed-sheet-empty {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.feed-sheet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.feed-sheet-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+}
+
+.feed-sheet-list li:last-child {
+  border-bottom: 0;
+}
+
+.feed-sheet-meta {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.feed-sheet-meta strong {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.feed-sheet-meta .muted {
+  font-size: 11px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feed-sheet-err {
+  font-size: 11px;
+  color: #e25b5b;
+}
+
+.feed-sheet-remove {
+  font: inherit;
+  font-size: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.feed-sheet-remove:hover:not(:disabled) {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--line) 50%, transparent);
+}
+
+.feed-sheet-remove:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.feed-sheet-add {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.feed-sheet-add input {
+  min-width: 0;
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 88%, var(--ink) 4%);
+  color: var(--ink);
+  outline: none;
+}
+
+.feed-sheet-add input:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.feed-sheet-add input::placeholder {
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.feed-sheet-add input:focus {
+  border-color: color-mix(in srgb, var(--theme) 55%, var(--line));
+}
+
+.feed-sheet-add .btn-theme {
+  border-radius: 8px !important;
+  padding: 8px 14px !important;
+}

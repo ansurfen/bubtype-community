@@ -1,0 +1,236 @@
+.import-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: color-mix(in srgb, #000 46%, transparent);
+}
+
+.import-sheet {
+  width: min(560px, 100%);
+  max-height: min(86vh, 720px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 18px 48px color-mix(in srgb, #000 35%, transparent);
+  overflow: hidden;
+}
+
+.import-sheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}
+
+.import-sheet-head h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.import-sheet-sub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.import-sheet-close {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.import-sheet-close:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.import-sheet-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 14px 18px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.import-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.import-block h4 {
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.import-step-n {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent, #ec4899) 18%, transparent);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.import-hint {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.import-cols {
+  margin: 0 0 12px;
+  padding: 8px 10px 8px 22px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.import-cols li + li {
+  margin-top: 2px;
+}
+
+.import-more-formats {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.import-more-formats summary {
+  cursor: pointer;
+  user-select: none;
+  color: var(--muted);
+}
+
+.import-more-formats summary:hover {
+  color: var(--ink);
+}
+
+.import-more-formats ul {
+  margin: 8px 0 0;
+  padding: 0 0 0 18px;
+  line-height: 1.55;
+}
+
+.import-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.import-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.import-field input {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.import-meta {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.import-warn {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: color-mix(in srgb, #f59e0b 80%, var(--ink));
+}
+
+.import-table-wrap {
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 220px;
+}
+
+.import-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.import-table-wrap th,
+.import-table-wrap td {
+  padding: 7px 9px;
+  text-align: left;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+  vertical-align: top;
+  white-space: pre-line;
+}
+
+.import-table-wrap th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.import-ex {
+  max-width: 160px;
+}
+
+.import-more,
+.import-message {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.import-sheet-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 18px 16px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+}

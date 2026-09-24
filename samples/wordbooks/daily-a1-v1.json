@@ -1,0 +1,37 @@
+{
+  "manifest": {
+    "id": "daily-a1",
+    "title": "日常 A1",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "source": "mock",
+    "lemmaCount": 24
+  },
+  "lemmas": [
+    "morning",
+    "cold",
+    "open",
+    "window",
+    "please",
+    "water",
+    "coffee",
+    "bread",
+    "home",
+    "work",
+    "today",
+    "tomorrow",
+    "friend",
+    "family",
+    "school",
+    "book",
+    "time",
+    "day",
+    "night",
+    "good",
+    "bad",
+    "happy",
+    "sorry",
+    "thanks"
+  ]
+}

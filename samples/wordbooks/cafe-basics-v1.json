@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "id": "cafe-basics",
+    "title": "咖啡馆基础",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "source": "mock",
+    "lemmaCount": 18
+  },
+  "lemmas": [
+    "coffee",
+    "tea",
+    "milk",
+    "sugar",
+    "cup",
+    "menu",
+    "order",
+    "bill",
+    "table",
+    "seat",
+    "wait",
+    "ready",
+    "hot",
+    "cold",
+    "small",
+    "large",
+    "please",
+    "thanks"
+  ]
+}

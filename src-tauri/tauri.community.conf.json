@@ -1,0 +1,7 @@
+{
+  "productName": "BubType Community",
+  "identifier": "app.bubtype.community",
+  "build": {
+    "beforeBuildCommand": "npm run build:community"
+  }
+}

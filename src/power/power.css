@@ -1,0 +1,36 @@
+.power {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.power-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.power-combo-slot {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.power-combo-slot .combo-meter.align-left {
+  text-align: left;
+}
+
+.power-combo-slot .combo-meter.align-left .combo-bar {
+  transform-origin: left center;
+}
+
+.power-combo-slot .combo-meter.align-left .combo-exclamations,
+.power-combo-slot .combo-meter.align-left .combo-exclamation {
+  right: auto;
+  left: 0;
+}

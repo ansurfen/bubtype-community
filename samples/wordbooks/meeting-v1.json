@@ -1,0 +1,22 @@
+{
+  "manifest": {
+    "id": "meeting",
+    "title": "开会沟通",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "source": "mock",
+    "lemmaCount": 8,
+    "description": "会议沟通短句"
+  },
+  "items": [
+    { "text": "Can we start the meeting?", "hint": "我们可以开始会议了吗？", "kind": "sentence" },
+    { "text": "I will share my screen.", "hint": "我来共享屏幕。", "kind": "sentence" },
+    { "text": "Could you speak louder?", "hint": "你能大声一点吗？", "kind": "sentence" },
+    { "text": "Let me check the numbers.", "hint": "我核对一下数字。", "kind": "sentence" },
+    { "text": "We can discuss this later.", "hint": "我们可以稍后再谈。", "kind": "sentence" },
+    { "text": "Please send me the file.", "hint": "请把文件发给我。", "kind": "sentence" },
+    { "text": "I agree with that point.", "hint": "我同意这一点。", "kind": "sentence" },
+    { "text": "Sorry I am running late.", "hint": "抱歉我要迟到了。", "kind": "sentence" }
+  ]
+}

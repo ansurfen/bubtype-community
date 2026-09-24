@@ -1,0 +1,23 @@
+{
+  "manifest": {
+    "id": "cafe",
+    "title": "咖啡馆",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "source": "mock",
+    "lemmaCount": 9,
+    "description": "点餐与闲聊短句"
+  },
+  "items": [
+    { "text": "Can I have a coffee?", "hint": "我能来杯咖啡吗？", "kind": "sentence" },
+    { "text": "I would like some water.", "hint": "我想要一些水。", "kind": "sentence" },
+    { "text": "Is this seat free?", "hint": "这个座位有人吗？", "kind": "sentence" },
+    { "text": "How much is the cake?", "hint": "这个蛋糕多少钱？", "kind": "sentence" },
+    { "text": "Could I get the bill?", "hint": "可以结账吗？", "kind": "sentence" },
+    { "text": "Do you have oat milk?", "hint": "你们有燕麦奶吗？", "kind": "sentence" },
+    { "text": "I will take it to go.", "hint": "我要外带。", "kind": "sentence" },
+    { "text": "It tastes really good.", "hint": "味道真的很好。", "kind": "sentence" },
+    { "text": "Please put on your coat.", "hint": "请穿上外套。", "kind": "sentence" }
+  ]
+}

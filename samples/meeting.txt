@@ -1,0 +1,13 @@
+# bubtype-queue/1
+title: 开会沟通
+lang: en
+mode: both
+
+Can we start the meeting? | 我们可以开始会议了吗？
+I will share my screen. | 我来共享屏幕。
+Could you speak louder? | 你能大声一点吗？
+Let me check the numbers. | 我核对一下数字。
+We can discuss this later. | 我们可以稍后再谈。
+Please send me the file. | 请把文件发给我。
+I agree with that point. | 我同意这一点。
+Sorry I am running late. | 抱歉我要迟到了。

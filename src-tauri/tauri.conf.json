@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "BubType",
+  "version": "0.1.0",
+  "identifier": "app.bubtype.overlay",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "BubType",
+        "width": 1040,
+        "height": 780,
+        "minWidth": 900,
+        "minHeight": 640,
+        "center": true,
+        "decorations": true,
+        "transparent": false,
+        "shadow": true,
+        "zoomHotkeysEnabled": false
+      },
+      {
+        "label": "overlay",
+        "title": "",
+        "url": "index.html",
+        "width": 480,
+        "height": 35,
+        "minWidth": 120,
+        "minHeight": 22,
+        "x": 480,
+        "y": 48,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": true,
+        "shadow": false,
+        "focus": false,
+        "maximizable": false,
+        "minimizable": false,
+        "backgroundColor": "#00000000",
+        "zoomHotkeysEnabled": false
+      },
+      {
+        "label": "power",
+        "title": "",
+        "url": "index.html",
+        "width": 800,
+        "height": 600,
+        "x": 0,
+        "y": 0,
+        "visible": false,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": false,
+        "shadow": false,
+        "focus": false,
+        "maximizable": false,
+        "minimizable": false,
+        "backgroundColor": "#00000000",
+        "zoomHotkeysEnabled": false
+      },
+      {
+        "label": "gloss",
+        "title": "",
+        "url": "index.html",
+        "width": 340,
+        "height": 300,
+        "x": 100,
+        "y": 100,
+        "visible": false,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": false,
+        "shadow": false,
+        "focus": false,
+        "maximizable": false,
+        "minimizable": false,
+        "backgroundColor": "#00000000",
+        "zoomHotkeysEnabled": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

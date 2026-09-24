@@ -1,0 +1,22 @@
+{
+  "manifest": {
+    "id": "morning",
+    "title": "早晨日常",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "source": "mock",
+    "lemmaCount": 8,
+    "description": "A1 早晨短句"
+  },
+  "items": [
+    { "text": "I can see a fish.", "hint": "我能看见一条鱼。", "kind": "sentence" },
+    { "text": "I can see the fog.", "hint": "我能看见雾。", "kind": "sentence" },
+    { "text": "The train is late.", "hint": "火车晚点了。", "kind": "sentence" },
+    { "text": "She likes black coffee.", "hint": "她喜欢黑咖啡。", "kind": "sentence" },
+    { "text": "Where is the station?", "hint": "车站在哪里？", "kind": "sentence" },
+    { "text": "Please open the window.", "hint": "请把窗户打开。", "kind": "sentence" },
+    { "text": "It is cold this morning.", "hint": "今天早上很冷。", "kind": "sentence" },
+    { "text": "I will be back at six.", "hint": "我六点回来。", "kind": "sentence" }
+  ]
+}

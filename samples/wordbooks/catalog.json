@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "source": "mock",
+  "updatedAt": "2026-09-24",
+  "books": [
+    {
+      "id": "morning",
+      "title": "早晨日常",
+      "version": "1.0.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 8,
+      "description": "A1 早晨短句",
+      "asset": "morning-v1.json"
+    },
+    {
+      "id": "cafe",
+      "title": "咖啡馆",
+      "version": "1.0.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 9,
+      "description": "点餐与闲聊短句",
+      "asset": "cafe-v1.json"
+    },
+    {
+      "id": "commute",
+      "title": "通勤路上",
+      "version": "1.0.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 8,
+      "description": "出行与换乘短句",
+      "asset": "commute-v1.json"
+    },
+    {
+      "id": "meeting",
+      "title": "开会沟通",
+      "version": "1.0.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 8,
+      "description": "会议沟通短句",
+      "asset": "meeting-v1.json"
+    },
+    {
+      "id": "daily-a1",
+      "title": "日常 A1",
+      "version": "1.0.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 24,
+      "description": "早晨与日常基础词",
+      "asset": "daily-a1-v1.json"
+    },
+    {
+      "id": "cafe-basics",
+      "title": "咖啡馆基础",
+      "version": "1.0.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 18,
+      "description": "点餐与闲聊常用词",
+      "asset": "cafe-basics-v1.json"
+    },
+    {
+      "id": "oxford-3000-zh",
+      "title": "Oxford 3000",
+      "version": "1.1.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 2979,
+      "description": "牛津核心词表 · 中文释义",
+      "asset": "oxford-3000-zh-v1.json"
+    },
+    {
+      "id": "oxford-3000-en",
+      "title": "Oxford 3000",
+      "version": "1.1.0",
+      "lang": "en",
+      "glossLang": "en",
+      "lemmaCount": 2979,
+      "description": "Oxford core list · English definitions",
+      "asset": "oxford-3000-en-v1.json"
+    },
+    {
+      "id": "oxford-3000-ja",
+      "title": "Oxford 3000",
+      "version": "1.1.0",
+      "lang": "en",
+      "glossLang": "ja",
+      "lemmaCount": 2979,
+      "description": "Oxford コア語彙 · 日本語訳",
+      "asset": "oxford-3000-ja-v1.json"
+    },
+    {
+      "id": "oxford-5000-zh",
+      "title": "Oxford 5000",
+      "version": "1.1.0",
+      "lang": "en",
+      "glossLang": "zh",
+      "lemmaCount": 4954,
+      "description": "牛津核心词表 · 中文释义",
+      "asset": "oxford-5000-zh-v1.json"
+    },
+    {
+      "id": "oxford-5000-en",
+      "title": "Oxford 5000",
+      "version": "1.1.0",
+      "lang": "en",
+      "glossLang": "en",
+      "lemmaCount": 4954,
+      "description": "Oxford core list · English definitions",
+      "asset": "oxford-5000-en-v1.json"
+    },
+    {
+      "id": "oxford-5000-ja",
+      "title": "Oxford 5000",
+      "version": "1.1.0",
+      "lang": "en",
+      "glossLang": "ja",
+      "lemmaCount": 4954,
+      "description": "Oxford コア語彙 · 日本語訳",
+      "asset": "oxford-5000-ja-v1.json"
+    }
+  ]
+}

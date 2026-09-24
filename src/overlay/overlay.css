@@ -1,0 +1,390 @@
+.overlay {
+  --frame: currentColor;
+  --pad-x: 6px;
+  --pad-y: 6px;
+  --pad-top: 8px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--pad-top) var(--pad-x) var(--pad-y);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  outline: none;
+  user-select: none;
+  cursor: default;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding-top: 22px;
+}
+
+.chrome {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 4px 6px;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border: 2px solid var(--frame);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.overlay.hot .frame {
+  opacity: 1;
+}
+
+.stack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18em;
+  width: 100%;
+  overflow: visible;
+}
+
+.line {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: fit-content;
+  max-width: none;
+  font-size: 1em;
+  line-height: 1.25;
+  white-space: nowrap;
+  word-break: normal;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.28),
+    0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* Invisible full-sentence gauge so dictation packs like blank/type. */
+.dictation-sizer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.caption {
+  display: inline-block;
+  max-width: none;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 0.28em;
+  padding: 0.08em 0.34em;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-shadow: none;
+}
+
+.line:has(.caption) {
+  text-shadow: none;
+}
+
+.ghost-line {
+  display: inline-block;
+  padding: 0.02em 0.12em;
+  opacity: 0.55;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  text-shadow: none;
+}
+
+.fresh {
+  text-shadow: 0 0 8px currentColor;
+}
+
+.bad {
+  color: #c44747 !important;
+}
+
+.miss-flash {
+  display: inline;
+  font-weight: 700;
+  animation: miss-pop 0.32s ease-out;
+}
+
+@keyframes miss-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(0.12em);
+  }
+  18% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+.caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.88em;
+  margin: 0 0.03em;
+  border-radius: 1px;
+  background: currentColor;
+  vertical-align: -0.06em;
+  animation: caret-blink 1s step-end infinite;
+}
+
+.ghost {
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+.blank {
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+
+.word-tap {
+  cursor: pointer;
+}
+
+.word-hit {
+  display: inline;
+  border-radius: 6px;
+  padding: 0.02em 0.14em;
+  margin: 0 -0.02em;
+  color: #fff !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  cursor: pointer;
+}
+
+.word-hit > span {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Secondary rows: neutral light text on dark plate (not theme ink). */
+.overlay-ipa,
+.overlay-hint {
+  margin: 0;
+  max-width: none;
+  width: max-content;
+  padding: 0.04em 0.28em;
+  border-radius: 0.24em;
+  background: rgba(0, 0, 0, 0.42);
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  text-shadow: none;
+  font-family: "Segoe UI", "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.overlay-ipa {
+  margin-top: 0.05em;
+  font-size: 0.4em;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.overlay-hint {
+  margin-top: 0.06em;
+  font-size: 0.44em;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* tools float top-right; pack width must include tools so short lines don't clip */
+.tools {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 5px;
+  background: rgba(18, 18, 20, 0.62);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+}
+
+.overlay.hot .tools {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tools:empty {
+  display: none;
+}
+
+.tool {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 3px;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.62);
+  box-shadow: none !important;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.tool:hover {
+  background: transparent !important;
+  border: 0 !important;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.tool.on {
+  color: var(--frame, #ff4d6d);
+  background: transparent !important;
+}
+
+.tool svg,
+.tool .svg-inline--fa {
+  width: 11px;
+  height: 11px;
+  display: block;
+  font-size: 11px;
+  vertical-align: top;
+}
+
+.tool-rate {
+  width: auto;
+  min-width: 16px;
+  padding: 0 3px;
+}
+
+.tool-rate span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.hit {
+  position: absolute;
+  z-index: 4;
+}
+
+.hit::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: var(--frame);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay.hot .hit::after {
+  opacity: 1;
+}
+
+.hit.n,
+.hit.s {
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  cursor: ns-resize;
+}
+
+.hit.n {
+  top: -5px;
+}
+
+.hit.s {
+  bottom: -5px;
+}
+
+.hit.e,
+.hit.w {
+  top: 10px;
+  bottom: 10px;
+  width: 10px;
+  cursor: ew-resize;
+}
+
+.hit.e {
+  right: -5px;
+}
+
+.hit.w {
+  left: -5px;
+}
+
+.hit.nw,
+.hit.ne,
+.hit.sw,
+.hit.se {
+  width: 12px;
+  height: 12px;
+  z-index: 5;
+}
+
+.hit.nw {
+  top: -6px;
+  left: -6px;
+  cursor: nwse-resize;
+}
+
+.hit.ne {
+  top: -6px;
+  right: -6px;
+  cursor: nesw-resize;
+}
+
+.hit.sw {
+  bottom: -6px;
+  left: -6px;
+  cursor: nesw-resize;
+}
+
+.hit.se {
+  bottom: -6px;
+  right: -6px;
+  cursor: nwse-resize;
+}

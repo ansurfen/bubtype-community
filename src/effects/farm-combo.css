@@ -1,0 +1,78 @@
+.farm-combo {
+  position: absolute;
+  top: 52px;
+  right: 16px;
+  z-index: 4;
+  width: 180px;
+  pointer-events: none;
+  background: transparent;
+}
+
+.farm-combo.orchard-one {
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+  background: transparent;
+}
+
+.orchard-head {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  font-family: "Press Start 2P", monospace;
+  color: var(--theme);
+  text-align: right;
+  padding-right: 2px;
+  background: transparent;
+}
+
+.farm-combo-title {
+  color: #fff;
+  font-size: 10px;
+  text-shadow: 1px 1px 0 color-mix(in srgb, var(--theme) 70%, transparent);
+}
+
+.farm-combo-count {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.farm-combo-max {
+  font-size: 8px;
+  opacity: 0.85;
+  letter-spacing: -0.02em;
+}
+
+.orchard-plot-canvas {
+  display: block;
+  width: 168px;
+  height: 128px;
+  background: transparent;
+  image-rendering: pixelated;
+}
+
+.farm-combo.bump .orchard-plot-canvas {
+  animation: farm-bump 0.28s ease;
+}
+
+.farm-combo-sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+@keyframes farm-bump {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

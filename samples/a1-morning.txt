@@ -1,0 +1,14 @@
+# bubtype-queue/1
+# 一行一句。竖线后面是提示。可选第三段：audio: 相对或绝对路径
+title: 早晨日常
+lang: en
+mode: both
+
+I can see a fish. | 我能看见一条鱼。
+I can see the fog. | 我能看见雾。
+The train is late. | 火车晚点了。
+She likes black coffee. | 她喜欢黑咖啡。
+Where is the station? | 车站在哪里？
+Please open the window. | 请把窗户打开。
+It is cold this morning. | 今天早上很冷。
+I will be back at six. | 我六点回来。

@@ -1,0 +1,662 @@
+{
+  "manifest": {
+    "id": "bubtype-glossary-core",
+    "version": "1.0.0",
+    "lang": "en",
+    "glossLang": "zh",
+    "kind": "core",
+    "lemmaCount": 48
+  },
+  "entries": [
+    {
+      "lemma": "coffee",
+      "ipa": "/ˈkɒfi/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "咖啡"
+        }
+      ],
+      "examples": [
+        {
+          "src": "Can I have a coffee?",
+          "tr": "我能来杯咖啡吗？"
+        }
+      ]
+    },
+    {
+      "lemma": "water",
+      "ipa": "/ˈwɔːtə/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "水"
+        },
+        {
+          "pos": "v",
+          "gloss": "浇水"
+        }
+      ]
+    },
+    {
+      "lemma": "seat",
+      "ipa": "/siːt/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "座位"
+        }
+      ]
+    },
+    {
+      "lemma": "free",
+      "ipa": "/friː/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "空闲的, 免费的"
+        },
+        {
+          "pos": "v",
+          "gloss": "释放"
+        }
+      ]
+    },
+    {
+      "lemma": "cake",
+      "ipa": "/keɪk/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "蛋糕"
+        }
+      ]
+    },
+    {
+      "lemma": "bill",
+      "ipa": "/bɪl/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "账单; 钞票"
+        }
+      ]
+    },
+    {
+      "lemma": "oat",
+      "ipa": "/əʊt/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "燕麦"
+        }
+      ]
+    },
+    {
+      "lemma": "milk",
+      "ipa": "/mɪlk/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "牛奶"
+        }
+      ]
+    },
+    {
+      "lemma": "taste",
+      "ipa": "/teɪst/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "尝起来; 品尝"
+        },
+        {
+          "pos": "n",
+          "gloss": "味道; 品味"
+        }
+      ]
+    },
+    {
+      "lemma": "good",
+      "ipa": "/ɡʊd/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "好的"
+        }
+      ]
+    },
+    {
+      "lemma": "fish",
+      "ipa": "/fɪʃ/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "鱼"
+        },
+        {
+          "pos": "v",
+          "gloss": "钓鱼"
+        }
+      ],
+      "examples": [
+        {
+          "src": "I can see a fish.",
+          "tr": "我能看见一条鱼。"
+        }
+      ]
+    },
+    {
+      "lemma": "fog",
+      "ipa": "/fɒɡ/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "雾"
+        }
+      ]
+    },
+    {
+      "lemma": "train",
+      "ipa": "/treɪn/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "火车"
+        },
+        {
+          "pos": "v",
+          "gloss": "训练"
+        }
+      ]
+    },
+    {
+      "lemma": "late",
+      "ipa": "/leɪt/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "晚的; 迟到的"
+        }
+      ]
+    },
+    {
+      "lemma": "black",
+      "ipa": "/blæk/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "黑色的"
+        }
+      ]
+    },
+    {
+      "lemma": "station",
+      "ipa": "/ˈsteɪʃn/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "车站"
+        }
+      ]
+    },
+    {
+      "lemma": "window",
+      "ipa": "/ˈwɪndəʊ/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "窗户"
+        }
+      ]
+    },
+    {
+      "lemma": "cold",
+      "ipa": "/kəʊld/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "冷的"
+        },
+        {
+          "pos": "n",
+          "gloss": "感冒"
+        }
+      ]
+    },
+    {
+      "lemma": "morning",
+      "ipa": "/ˈmɔːnɪŋ/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "早晨"
+        }
+      ]
+    },
+    {
+      "lemma": "back",
+      "ipa": "/bæk/",
+      "senses": [
+        {
+          "pos": "adv",
+          "gloss": "回; 向后"
+        },
+        {
+          "pos": "n",
+          "gloss": "背部"
+        },
+        {
+          "pos": "adj",
+          "gloss": "后面的"
+        }
+      ]
+    },
+    {
+      "lemma": "put",
+      "ipa": "/pʊt/",
+      "senses": [
+        {
+          "pos": "vt",
+          "gloss": "放; 安置"
+        }
+      ],
+      "examples": [
+        {
+          "src": "Put the book on the table.",
+          "tr": "把书放在桌上。"
+        },
+        {
+          "src": "Please put on your coat.",
+          "tr": "请穿上外套。"
+        }
+      ]
+    },
+    {
+      "lemma": "on",
+      "ipa": "/ɒn/",
+      "senses": [
+        {
+          "pos": "prep",
+          "gloss": "在…上"
+        },
+        {
+          "pos": "adv",
+          "gloss": "继续; 穿着"
+        }
+      ]
+    },
+    {
+      "lemma": "single",
+      "ipa": "/ˈsɪŋɡl/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "单身的; 单一的; 单程的"
+        },
+        {
+          "pos": "n",
+          "gloss": "单打; 单程票"
+        },
+        {
+          "pos": "vt",
+          "gloss": "选出"
+        }
+      ],
+      "examples": [
+        {
+          "src": "I am single.",
+          "tr": "我是单身。"
+        }
+      ]
+    },
+    {
+      "lemma": "umbrella",
+      "ipa": "/ʌmˈbrelə/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "伞; 雨伞; 阳伞; 保护伞"
+        },
+        {
+          "pos": "adj",
+          "gloss": "总括的; 综合的"
+        }
+      ],
+      "examples": [
+        {
+          "src": "I bought a large umbrella.",
+          "tr": "我买了一把大伞。"
+        },
+        {
+          "src": "Take an umbrella in case it rains.",
+          "tr": "带把伞以防下雨。"
+        }
+      ],
+      "synonyms": [
+        "parasol"
+      ],
+      "etymology": "来自意大利语 ombrella（小阴影），源自拉丁语 umbra（阴影）。"
+    },
+    {
+      "lemma": "please",
+      "ipa": "/pliːz/",
+      "senses": [
+        {
+          "pos": "adv",
+          "gloss": "请"
+        },
+        {
+          "pos": "v",
+          "gloss": "使高兴; 取悦"
+        }
+      ]
+    },
+    {
+      "lemma": "open",
+      "ipa": "/ˈəʊpən/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "打开"
+        },
+        {
+          "pos": "adj",
+          "gloss": "开着的"
+        }
+      ]
+    },
+    {
+      "lemma": "see",
+      "ipa": "/siː/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "看见; 明白"
+        }
+      ]
+    },
+    {
+      "lemma": "like",
+      "ipa": "/laɪk/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "喜欢"
+        },
+        {
+          "pos": "prep",
+          "gloss": "像"
+        }
+      ]
+    },
+    {
+      "lemma": "have",
+      "ipa": "/hæv/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "有; 吃喝"
+        }
+      ]
+    },
+    {
+      "lemma": "take",
+      "ipa": "/teɪk/",
+      "senses": [
+        {
+          "pos": "vt",
+          "gloss": "拿; 带走; 花费"
+        }
+      ]
+    },
+    {
+      "lemma": "get",
+      "ipa": "/ɡet/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "得到; 到达"
+        }
+      ]
+    },
+    {
+      "lemma": "would",
+      "ipa": "/wʊd/",
+      "senses": [
+        {
+          "pos": "modal",
+          "gloss": "将; 愿意; 可能"
+        }
+      ]
+    },
+    {
+      "lemma": "could",
+      "ipa": "/kʊd/",
+      "senses": [
+        {
+          "pos": "modal",
+          "gloss": "能够; 可以"
+        }
+      ]
+    },
+    {
+      "lemma": "really",
+      "ipa": "/ˈrɪəli/",
+      "senses": [
+        {
+          "pos": "adv",
+          "gloss": "真正地; 非常"
+        }
+      ]
+    },
+    {
+      "lemma": "much",
+      "ipa": "/mʌtʃ/",
+      "senses": [
+        {
+          "pos": "adv",
+          "gloss": "非常"
+        },
+        {
+          "pos": "det",
+          "gloss": "许多"
+        }
+      ]
+    },
+    {
+      "lemma": "this",
+      "ipa": "/ðɪs/",
+      "senses": [
+        {
+          "pos": "det",
+          "gloss": "这; 这个"
+        }
+      ]
+    },
+    {
+      "lemma": "where",
+      "ipa": "/weə/",
+      "senses": [
+        {
+          "pos": "adv",
+          "gloss": "在哪里"
+        }
+      ]
+    },
+    {
+      "lemma": "will",
+      "ipa": "/wɪl/",
+      "senses": [
+        {
+          "pos": "modal",
+          "gloss": "将要"
+        },
+        {
+          "pos": "n",
+          "gloss": "意愿; 遗嘱"
+        }
+      ]
+    },
+    {
+      "lemma": "coat",
+      "ipa": "/kəʊt/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "外套"
+        }
+      ]
+    },
+    {
+      "lemma": "table",
+      "ipa": "/ˈteɪbl/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "桌子"
+        }
+      ]
+    },
+    {
+      "lemma": "book",
+      "ipa": "/bʊk/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "书"
+        },
+        {
+          "pos": "v",
+          "gloss": "预订"
+        }
+      ]
+    },
+    {
+      "lemma": "rain",
+      "ipa": "/reɪn/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "雨"
+        },
+        {
+          "pos": "v",
+          "gloss": "下雨"
+        }
+      ]
+    },
+    {
+      "lemma": "large",
+      "ipa": "/lɑːdʒ/",
+      "senses": [
+        {
+          "pos": "adj",
+          "gloss": "大的"
+        }
+      ]
+    },
+    {
+      "lemma": "bought",
+      "ipa": "/bɔːt/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "买（buy 的过去式）"
+        }
+      ]
+    },
+    {
+      "lemma": "buy",
+      "ipa": "/baɪ/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "买"
+        }
+      ]
+    },
+    {
+      "lemma": "case",
+      "ipa": "/keɪs/",
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "情况; 箱子; 案例"
+        }
+      ]
+    },
+    {
+      "lemma": "am",
+      "ipa": "/æm/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "是（be 的第一人称）"
+        }
+      ]
+    },
+    {
+      "lemma": "go",
+      "ipa": "/ɡəʊ/",
+      "senses": [
+        {
+          "pos": "v",
+          "gloss": "去; 走"
+        }
+      ]
+    }
+  ],
+  "phrases": [
+    {
+      "text": "put on",
+      "lemmas": [
+        "put",
+        "on"
+      ],
+      "senses": [
+        {
+          "pos": "phrase",
+          "gloss": "穿上; 戴上; 上演"
+        }
+      ]
+    },
+    {
+      "text": "to go",
+      "lemmas": [
+        "go"
+      ],
+      "senses": [
+        {
+          "pos": "phrase",
+          "gloss": "外带"
+        }
+      ]
+    },
+    {
+      "text": "oat milk",
+      "lemmas": [
+        "oat",
+        "milk"
+      ],
+      "senses": [
+        {
+          "pos": "n",
+          "gloss": "燕麦奶"
+        }
+      ]
+    },
+    {
+      "text": "in case",
+      "lemmas": [
+        "case"
+      ],
+      "senses": [
+        {
+          "pos": "phrase",
+          "gloss": "以防; 免得"
+        }
+      ]
+    }
+  ]
+}

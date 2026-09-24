@@ -1,0 +1,31 @@
+.hit-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+.particle-skin-switch {
+  flex-shrink: 0;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: 32px !important;
+  padding: 0 10px !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: var(--hover) !important;
+  color: var(--ink) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  box-shadow: none !important;
+}
+
+.particle-skin-switch:hover {
+  background: color-mix(in srgb, var(--theme) 18%, var(--hover)) !important;
+  color: var(--theme) !important;
+  border-color: transparent !important;
+}

@@ -1,0 +1,120 @@
+.panda-combo {
+  position: absolute;
+  top: 48px;
+  right: 16px;
+  z-index: 4;
+  width: 168px;
+  pointer-events: none;
+  background: transparent;
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.panda-combo-head {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  font-family: "Press Start 2P", monospace;
+  color: var(--theme);
+  text-align: right;
+}
+
+.panda-combo-title {
+  color: #fff;
+  font-size: 10px;
+  text-shadow: 1px 1px 0 color-mix(in srgb, var(--theme) 70%, transparent);
+}
+
+.panda-combo-count {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.panda-combo-max {
+  font-size: 8px;
+  opacity: 0.85;
+}
+
+.panda-stage {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background: transparent;
+}
+
+.panda-bob {
+  position: absolute;
+  inset: 0;
+  animation: panda-bob 1.6s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+
+.panda-combo.sleep .panda-bob {
+  animation-duration: 2.4s;
+}
+
+.panda-combo.bump .panda-bob {
+  animation: panda-pop 0.28s ease;
+}
+
+.panda-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  background: transparent;
+  pointer-events: none;
+}
+
+.panda-frame.base {
+  opacity: 1;
+  transition: opacity 0.32s ease;
+}
+
+.panda-frame.base.out {
+  opacity: 0;
+}
+
+.panda-frame.overlay {
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.panda-frame.overlay.in {
+  opacity: 1;
+}
+
+.panda-combo-sparks {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+@keyframes panda-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1.2deg);
+  }
+}
+
+@keyframes panda-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08) translateY(-4px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

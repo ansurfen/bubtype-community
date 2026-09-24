@@ -1,0 +1,25 @@
+.effects-community {
+  display: grid;
+  gap: 28px;
+  max-width: 720px;
+}
+
+.effects-community-hero h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.effects-community-kicker {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.effects-community-lead {
+  margin: 0;
+  color: color-mix(in srgb, var(--ink) 72%, var(--muted));
+  line-height: 1.5;
+}

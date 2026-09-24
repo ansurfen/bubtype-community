@@ -1,0 +1,74 @@
+.ctx-menu {
+  position: fixed;
+  z-index: 200;
+  min-width: 168px;
+  max-width: 260px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--line, #333) 90%, transparent);
+  background: color-mix(in srgb, var(--bg, #1c1c1e) 94%, #000);
+  color: var(--ink, #f2f2f2);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.ctx-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 8px 10px !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  color: inherit !important;
+  font: inherit;
+  font-size: 13px !important;
+  font-weight: 550 !important;
+  text-align: left;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.ctx-item:hover:not(:disabled),
+.ctx-item:focus-visible:not(:disabled) {
+  background: color-mix(in srgb, var(--theme, #ff4d6d) 18%, transparent) !important;
+  outline: none;
+}
+
+.ctx-item:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.ctx-item.danger {
+  color: #ff8a9a !important;
+}
+
+.ctx-item.on .ctx-label {
+  color: var(--theme, #ff4d6d);
+}
+
+.ctx-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ctx-check {
+  flex: none;
+  color: var(--theme, #ff4d6d);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ctx-sep {
+  height: 1px;
+  margin: 5px 6px;
+  background: color-mix(in srgb, var(--line, #444) 80%, transparent);
+}

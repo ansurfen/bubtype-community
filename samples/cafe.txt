@@ -1,0 +1,14 @@
+# bubtype-queue/1
+title: 咖啡馆
+lang: en
+mode: both
+
+Can I have a coffee? | 我能来杯咖啡吗？
+I would like some water. | 我想要一些水。
+Is this seat free? | 这个座位有人吗？
+How much is the cake? | 这个蛋糕多少钱？
+Could I get the bill? | 可以结账吗？
+Do you have oat milk? | 你们有燕麦奶吗？
+I will take it to go. | 我要外带。
+It tastes really good. | 味道真的很好。
+Please put on your coat. | 请穿上外套。
