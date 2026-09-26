@@ -59,7 +59,7 @@ export function registerKeySoundPacks(
 
 const SOUND_KEY = "bubtype.keySound";
 const VOLUME_KEY = "bubtype.keySoundVolume";
-const DEFAULT_VOLUME = 0.55;
+const DEFAULT_VOLUME = 1;
 
 const pools = new Map<string, HTMLAudioElement[]>();
 
@@ -105,20 +105,20 @@ export function parseKeySoundId(raw: unknown): KeySoundId {
 }
 
 export function readKeySoundId(preferred?: string | null): KeySoundId {
+  // Trust shared settings across webviews; license is enforced on write/select.
   if (preferred) {
     const id = parseKeySoundId(preferred);
-    if (isKeySoundAllowed(id)) return id;
+    if (KEY_SOUND_PACKS.some((p) => p.id === id)) return id;
   }
   try {
-    const id = parseKeySoundId(localStorage.getItem(SOUND_KEY));
-    if (!isKeySoundAllowed(id)) return "basic";
-    return id;
+    return parseKeySoundId(localStorage.getItem(SOUND_KEY));
   } catch {
     return "basic";
   }
 }
 
 export function writeKeySoundId(id: KeySoundId) {
+  if (!isKeySoundAllowed(id)) return;
   try {
     localStorage.setItem(SOUND_KEY, id);
   } catch {

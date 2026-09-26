@@ -2116,6 +2116,81 @@ fn set_key_sound(app: AppHandle, pack: String) {
     emit_snapshot(&app);
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+#[serde(rename_all = "camelCase")]
+struct StoredLicense {
+    #[serde(default)]
+    key: String,
+    #[serde(default)]
+    email: String,
+    #[serde(default)]
+    last_ok_at: Option<i64>,
+}
+
+fn license_path_for(model: &Model) -> PathBuf {
+    model
+        .config_path
+        .parent()
+        .map(|p| p.join("license.json"))
+        .unwrap_or_else(|| PathBuf::from("license.json"))
+}
+
+fn read_license_file(path: &Path) -> Option<StoredLicense> {
+    let bytes = fs::read(path).ok()?;
+    let parsed: StoredLicense = serde_json::from_slice(&bytes).ok()?;
+    if parsed.key.trim().is_empty() {
+        return None;
+    }
+    Some(parsed)
+}
+
+fn write_license_file(path: &Path, license: Option<&StoredLicense>) {
+    if let Some(parent) = path.parent() {
+        let _ = fs::create_dir_all(parent);
+    }
+    match license {
+        Some(lic) if !lic.key.trim().is_empty() => {
+            if let Ok(bytes) = serde_json::to_vec_pretty(lic) {
+                let _ = fs::write(path, bytes);
+            }
+        }
+        _ => {
+            let _ = fs::remove_file(path);
+        }
+    }
+}
+
+#[tauri::command]
+fn get_stored_license(app: AppHandle) -> Option<StoredLicense> {
+    let state = app.state::<Mutex<Model>>();
+    let model = lock(&state);
+    read_license_file(&license_path_for(&model))
+}
+
+#[tauri::command]
+fn set_stored_license(
+    app: AppHandle,
+    key: Option<String>,
+    email: Option<String>,
+    last_ok_at: Option<i64>,
+) {
+    let path = {
+        let state = app.state::<Mutex<Model>>();
+        let model = lock(&state);
+        license_path_for(&model)
+    };
+    let trimmed = key.map(|k| k.trim().to_string()).filter(|k| !k.is_empty());
+    let payload = trimmed.map(|k| StoredLicense {
+        key: k,
+        email: email
+            .map(|e| e.trim().to_ascii_lowercase())
+            .unwrap_or_default(),
+        last_ok_at,
+    });
+    write_license_file(&path, payload.as_ref());
+    let _ = app.emit("license-changed", payload);
+}
+
 #[tauri::command]
 fn set_ui_dark(app: AppHandle, dark: bool) {
     {
@@ -3584,6 +3659,8 @@ pub fn run() {
             set_gloss_lang,
             set_particle_skin,
             set_key_sound,
+            get_stored_license,
+            set_stored_license,
             set_ui_dark,
             set_practice_mode,
             set_show_hint,

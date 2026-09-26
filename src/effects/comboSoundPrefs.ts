@@ -18,8 +18,8 @@ const PREFS_KEY = "bubtype.comboSoundPrefs";
 export const DEFAULT_COMBO_SOUND_PREFS: ComboSoundPrefs = {
   enabled: true,
   bingo: true,
-  cheer: true,
-  milestone: true,
+  cheer: false,
+  milestone: false,
 };
 
 export function readComboSoundPrefs(): ComboSoundPrefs {
@@ -28,10 +28,22 @@ export function readComboSoundPrefs(): ComboSoundPrefs {
     if (!raw) return { ...DEFAULT_COMBO_SOUND_PREFS };
     const parsed = JSON.parse(raw) as Partial<ComboSoundPrefs>;
     return {
-      enabled: parsed.enabled !== false,
-      bingo: parsed.bingo !== false,
-      cheer: parsed.cheer !== false,
-      milestone: parsed.milestone !== false,
+      enabled:
+        typeof parsed.enabled === "boolean"
+          ? parsed.enabled
+          : DEFAULT_COMBO_SOUND_PREFS.enabled,
+      bingo:
+        typeof parsed.bingo === "boolean"
+          ? parsed.bingo
+          : DEFAULT_COMBO_SOUND_PREFS.bingo,
+      cheer:
+        typeof parsed.cheer === "boolean"
+          ? parsed.cheer
+          : DEFAULT_COMBO_SOUND_PREFS.cheer,
+      milestone:
+        typeof parsed.milestone === "boolean"
+          ? parsed.milestone
+          : DEFAULT_COMBO_SOUND_PREFS.milestone,
     };
   } catch {
     return { ...DEFAULT_COMBO_SOUND_PREFS };

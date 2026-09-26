@@ -9,14 +9,12 @@ export const PARTICLE_SKIN_KEY = "bubtype.particleSkin";
 export const PARTICLE_SKIN_EVENT = "bubtype-particle-skin";
 
 export function readParticleSkin(preferred?: string | null): ParticleSkinId {
-  const fromSettings =
-    preferred && isParticleSkinId(preferred) && isSkinAllowed(preferred)
-      ? preferred
-      : null;
-  if (fromSettings) return fromSettings;
+  // Prefer shared settings (all webviews) — do not re-check license here.
+  // Selection UI already gates writes; Overlay/Power often lack panel localStorage.
+  if (preferred && isParticleSkinId(preferred)) return preferred;
   try {
     const raw = localStorage.getItem(PARTICLE_SKIN_KEY);
-    if (raw && isParticleSkinId(raw) && isSkinAllowed(raw)) return raw;
+    if (raw && isParticleSkinId(raw)) return raw;
   } catch {
     /* ignore */
   }
@@ -24,6 +22,7 @@ export function readParticleSkin(preferred?: string | null): ParticleSkinId {
 }
 
 export function writeParticleSkin(id: ParticleSkinId) {
+  if (!isSkinAllowed(id)) return;
   try {
     localStorage.setItem(PARTICLE_SKIN_KEY, id);
   } catch {
