@@ -4,6 +4,15 @@
 
 <h1 align="center">BubType Community</h1>
 
+<p align="center">
+  <strong>简体中文</strong> ·
+  <a href="./README.en.md">English</a> ·
+  <a href="./README.zh-TW.md">繁體中文</a> ·
+  <a href="./README.ja.md">日本語</a> ·
+  <a href="./README.vi.md">Tiếng Việt</a> ·
+  <a href="./README.id.md">Bahasa Indonesia</a>
+</p>
+
 <p align="center"><strong>让每一次敲击，都多记住一点英语。</strong></p>
 
 <p align="center">开源桌面英语练习 · 悬浮字幕 · 听写与复习 · 键盘声与视觉反馈</p>
@@ -13,7 +22,7 @@
   <a href="#版本说明">版本说明</a> ·
   <a href="#本地开发">本地开发</a> ·
   <a href="https://bubtype.com">官网</a> ·
-  <a href="https://bubtype.com/buy/">BubType Pro</a> ·
+  <a href="https://bubtype.com">BubType Pro</a> ·
   <a href="./LICENSE">Apache-2.0</a>
 </p>
 
@@ -21,7 +30,7 @@
 
 BubType 把英语输入、听写、查词和复习放进一条连贯的练习流程。选择一组句子，听一遍，敲出来；遇到生词就查词、收藏，再通过复习巩固。悬浮字幕让练习留在桌面上，键盘声、粒子与连击反馈为每次输入增加一点乐趣。
 
-本仓库是 **BubType Community**（Apache-2.0 开源版），可自行构建与分发。付费增强能力见 [BubType Pro](https://bubtype.com/buy/)。
+本仓库是 **BubType Community**（Apache-2.0 开源版），可自行构建与分发。了解完整产品线请访问 [bubtype.com](https://bubtype.com)。
 
 ## 产品体验
 
@@ -43,11 +52,11 @@ BubType 把英语输入、听写、查词和复习放进一条连贯的练习流
 - **悬浮字幕**：调整位置、大小、字体、颜色与透明度，搭配可配置工具栏使用。
 - **即时反馈**：基础键盘声、Classic 粒子效果与连击反馈。
 - **桌面操作**：系统托盘与全局快捷键，方便呼出和控制练习。
-- **界面语言**：应用内支持英语、简体中文、繁体中文、日语、越南语、印尼语（随版本扩展，以应用设置为准）。
+- **界面语言**：应用设置中切换；文档语言见页顶链接。
 
 ## 版本说明
 
-Community 是独立开源构建；官网安装的 Free / Pro 为商业发行版，由许可证决定是否解锁更多视觉、键音与导出。
+Community 是独立开源构建；官网安装的 Free / Pro 为商业发行版，功能以官网说明为准。
 
 | 能力 | Community（本仓库） | Free | Pro |
 | --- | --- | --- | --- |
@@ -60,7 +69,7 @@ Community 是独立开源构建；官网安装的 Free / Pro 为商业发行版�
 | Excel 例句与 PDF 导出 | — | — | 支持 |
 | 许可证激活 | 无 | 可升级为 Pro | 已激活 |
 
-了解 Pro：[bubtype.com](https://bubtype.com) · [购买](https://bubtype.com/buy/)
+了解更多：[bubtype.com](https://bubtype.com)
 
 ## 本地开发
 
@@ -93,6 +102,4 @@ npm run tauri -- build --config src-tauri/tauri.community.conf.json
 
 ## 许可证
 
-[Apache License 2.0](./LICENSE)
-
-第三方代码、字体和音效遵循各自许可证。音效来源说明见 [src/assets/sfx/NOTICE.md](src/assets/sfx/NOTICE.md)。
+[Apache License 2.0](./LICENSE)。第三方代码、字体与音效遵循各自许可证。

@@ -18,6 +18,7 @@ Paths excluded from this Community tree (Pro-only / internal):
 - src/assets/sfx/red
 - src/assets/sfx/redPbt
 - src/assets/sfx/soft
+- src/assets/sfx/NOTICE.md
 - src/assets/panda
 - src/assets/orchard
 - src/assets/combo-farm
