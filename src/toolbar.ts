@@ -2,6 +2,7 @@ export const TOOLBAR_IDS = [
   "prev",
   "next",
   "replay",
+  "copy",
   "panel",
   "combo",
   "lookup",
@@ -15,6 +16,7 @@ export type ToolbarId = (typeof TOOLBAR_IDS)[number];
 export const TOOLBAR_ROWS: Array<{ id: ToolbarId; pair?: "nav" }> = [
   { id: "prev", pair: "nav" },
   { id: "replay" },
+  { id: "copy" },
   { id: "panel" },
   { id: "combo" },
   { id: "lookup" },
@@ -26,6 +28,7 @@ export const DEFAULT_TOOLBAR: ToolbarId[] = [
   "prev",
   "next",
   "replay",
+  "copy",
   "panel",
   "combo",
   "lookup",

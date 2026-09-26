@@ -1,5 +1,7 @@
-Excluded from this community extract (see private bubtype repo):
+Paths excluded from this Community tree (Pro-only / internal):
 - src/edition-pro
+- workers
+- .github
 - scripts/secrets
 - scripts/gen-license-keypair.mjs
 - scripts/issue-license.mjs

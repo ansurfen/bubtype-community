@@ -7,21 +7,14 @@ import { fileURLToPath } from "node:url";
 
 const host = process.env.TAURI_DEV_HOST;
 
-function resolveEdition(mode: string) {
-  const fromEnv = String(process.env.VITE_EDITION || "").toLowerCase();
-  if (fromEnv === "community" || fromEnv === "pro") return fromEnv;
-  if (mode === "community") return "community";
-  // Default commercial ship build (what you distribute).
-  return "pro";
+function resolveEdition(_mode: string) {
+  return "community";
 }
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const edition = resolveEdition(mode);
-  const impl =
-    edition === "community"
-      ? fileURLToPath(new URL("./src/edition-community", import.meta.url))
-      : fileURLToPath(new URL("./src/edition-pro", import.meta.url));
+  const impl = fileURLToPath(new URL("./src/edition-community", import.meta.url));
 
   return {
     plugins: [react()],

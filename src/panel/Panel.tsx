@@ -558,6 +558,21 @@ export default function Panel() {
       setEntitlement(getEntitlement());
       setBadgeStyle(readPremiumBadgeStyle());
     };
+    const onEntitlement = (event: Event) => {
+      const detail = (event as CustomEvent<{ licensed?: boolean; licenseKey?: string | null }>)
+        .detail;
+      if (detail && typeof detail.licensed === "boolean") {
+        setEntitlement({
+          edition: "pro",
+          tier: detail.licensed ? "pro" : "free",
+          licensed: detail.licensed,
+          licenseKey: detail.licensed ? detail.licenseKey ?? null : null,
+        });
+      } else {
+        sync();
+      }
+      setBadgeStyle(readPremiumBadgeStyle());
+    };
     const unsubEnt = subscribeEntitlement(sync);
     const onStorage = (event: StorageEvent) => {
       if (
@@ -570,11 +585,13 @@ export default function Panel() {
     window.addEventListener("storage", onStorage);
     window.addEventListener("focus", sync);
     window.addEventListener("bubtype-premium-badge-style", sync);
+    window.addEventListener("bubtype-entitlement", onEntitlement);
     return () => {
       unsubEnt();
       window.removeEventListener("storage", onStorage);
       window.removeEventListener("focus", sync);
       window.removeEventListener("bubtype-premium-badge-style", sync);
+      window.removeEventListener("bubtype-entitlement", onEntitlement);
     };
   }, []);
 

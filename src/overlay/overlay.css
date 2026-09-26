@@ -146,9 +146,13 @@
   height: 0.88em;
   margin: 0 0.03em;
   border-radius: 1px;
-  background: currentColor;
+  background: var(--theme, currentColor);
   vertical-align: -0.06em;
   animation: caret-blink 1s step-end infinite;
+}
+
+.overlay.rejected .caret {
+  background: #ef4444;
 }
 
 .ghost {

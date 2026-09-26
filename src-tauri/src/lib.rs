@@ -1,6 +1,7 @@
 mod platform;
 mod progress;
 mod queue;
+mod tts_cache;
 mod tts_engine;
 mod tts_providers;
 mod wordbook;
@@ -22,6 +23,7 @@ use tauri::{
     AppHandle, Emitter, LogicalPosition, LogicalSize, Manager, WebviewWindow, WindowEvent,
 };
 use tauri_plugin_global_shortcut::{GlobalShortcutExt, ShortcutState};
+use tts_cache::TtsSpeakHub;
 use tts_engine::TtsEngine;
 
 use crate::queue::{parse_queue, Queue, QueueItem};
@@ -247,6 +249,7 @@ fn default_toolbar_items() -> Vec<String> {
         "prev".into(),
         "next".into(),
         "replay".into(),
+        "copy".into(),
         "panel".into(),
         "combo".into(),
         "lookup".into(),
@@ -257,7 +260,7 @@ fn default_toolbar_items() -> Vec<String> {
 
 fn clean_toolbar_items(items: Vec<String>) -> Vec<String> {
     const ALLOWED: &[&str] = &[
-        "prev", "replay", "next", "panel", "combo", "lookup", "rate", "bookmark",
+        "prev", "replay", "copy", "next", "panel", "combo", "lookup", "rate", "bookmark",
     ];
     let mut seen = std::collections::HashSet::new();
     let mut raw: Vec<String> = Vec::new();
@@ -1124,12 +1127,79 @@ fn maybe_auto_speak(app: &AppHandle) {
     }
 }
 
+fn next_item_for_prewarm(model: &Model) -> Option<(String, Option<PathBuf>)> {
+    let len = model.queue.items.len();
+    if len < 2 {
+        return None;
+    }
+    let next_idx = if model.index + 1 < len {
+        model.index + 1
+    } else if is_wordbook_session(model) {
+        // Refill content is unknown until step — skip.
+        return None;
+    } else {
+        0
+    };
+    if next_idx == model.index {
+        return None;
+    }
+    let item = model.queue.items.get(next_idx)?;
+    Some((item.text.clone(), item.audio.clone()))
+}
+
+/// Resolve pack clip or provider synth into a cacheable payload.
+/// `Ok(None)` = system TTS already started playback.
+fn resolve_speak_clip(
+    app: &AppHandle,
+    hub: &TtsSpeakHub,
+    engine: &str,
+    text: String,
+    voice_id: Option<String>,
+    rate: f32,
+    audio: Option<PathBuf>,
+) -> Result<Option<ClipPayload>, String> {
+    if let Some(path) = audio.as_ref() {
+        let key = TtsSpeakHub::file_key(&path.to_string_lossy());
+        if let Some(hit) = hub.get(&key) {
+            return Ok(Some(hit));
+        }
+        if let Some(payload) = read_clip(path) {
+            hub.put(key, payload.clone());
+            return Ok(Some(payload));
+        }
+    }
+
+    let key = TtsSpeakHub::cache_key(engine, voice_id.as_deref(), rate, &text);
+    if let Some(hit) = hub.get(&key) {
+        return Ok(Some(hit));
+    }
+
+    match tts_providers::speak(app, engine, text, voice_id, rate) {
+        Ok(Some(payload)) => {
+            hub.put(key, payload.clone());
+            Ok(Some(payload))
+        }
+        Ok(None) => Ok(None),
+        Err(err) => Err(err),
+    }
+}
+
+/// Stop current clip and synthesize/play on a background thread.
+/// Also prewarms the next queue item (Piper / pack audio) after the current resolve.
 fn speak_current(app: &AppHandle) {
     let _ = app.emit("stop-clip", ());
+    if let Some(tts) = app.try_state::<TtsEngine>() {
+        tts.stop();
+    }
+
+    let Some(hub) = app.try_state::<TtsSpeakHub>() else {
+        return;
+    };
     let Some(state) = app.try_state::<Mutex<Model>>() else {
         return;
     };
-    let (text, audio, voice_id, rate, engine) = {
+
+    let (text, audio, voice_id, rate, engine, next) = {
         let model = lock(&state);
         let Some(item) = current_item(&model) else {
             return;
@@ -1140,36 +1210,75 @@ fn speak_current(app: &AppHandle) {
             model.settings.voice_id.clone(),
             model.settings.rate,
             model.settings.tts_engine.clone(),
+            next_item_for_prewarm(&model),
         )
     };
-    drop(state);
 
-    if let Some(path) = audio {
-        if let Some(payload) = read_clip(&path) {
-            let _ = app.emit("play-clip", payload);
+    let gen = hub.bump_gen();
+    let app2 = app.clone();
+    thread::spawn(move || {
+        let Some(hub) = app2.try_state::<TtsSpeakHub>() else {
             return;
-        }
-    }
+        };
+        let result = resolve_speak_clip(
+            &app2,
+            &hub,
+            &engine,
+            text,
+            voice_id.clone(),
+            rate,
+            audio,
+        );
 
-    match tts_providers::speak(app, &engine, text, voice_id, rate) {
-        Ok(Some(payload)) => {
-            let _ = app.emit("play-clip", payload);
-            if let Some(state) = app.try_state::<Mutex<Model>>() {
-                lock(&state).tts_error = None;
+        if hub.current_gen() == gen {
+            match result {
+                Ok(Some(payload)) => {
+                    let _ = app2.emit("play-clip", payload);
+                    if let Some(state) = app2.try_state::<Mutex<Model>>() {
+                        lock(&state).tts_error = None;
+                    }
+                }
+                Ok(None) => {
+                    if let Some(state) = app2.try_state::<Mutex<Model>>() {
+                        lock(&state).tts_error = None;
+                    }
+                }
+                Err(err) => {
+                    if let Some(state) = app2.try_state::<Mutex<Model>>() {
+                        lock(&state).tts_error = Some(err);
+                    }
+                    emit_snapshot(&app2);
+                }
             }
         }
-        Ok(None) => {
-            if let Some(state) = app.try_state::<Mutex<Model>>() {
-                lock(&state).tts_error = None;
+
+        // Prefetch next sentence while the user listens / types.
+        // Skip system TTS — it plays immediately and would interrupt the current line.
+        if let Some((next_text, next_audio)) = next {
+            let engine_norm = tts_providers::normalize_engine(&engine);
+            let can_prewarm = next_audio.is_some()
+                || engine_norm == "piper"
+                || engine_norm == "cloud";
+            if can_prewarm {
+                let next_key = if let Some(ref path) = next_audio {
+                    TtsSpeakHub::file_key(&path.to_string_lossy())
+                } else {
+                    TtsSpeakHub::cache_key(&engine, voice_id.as_deref(), rate, &next_text)
+                };
+                if hub.get(&next_key).is_none() {
+                    let _ = resolve_speak_clip(
+                        &app2,
+                        &hub,
+                        &engine,
+                        next_text,
+                        voice_id,
+                        rate,
+                        next_audio,
+                    );
+                }
             }
         }
-        Err(err) => {
-            if let Some(state) = app.try_state::<Mutex<Model>>() {
-                lock(&state).tts_error = Some(err);
-            }
-            emit_snapshot(app);
-        }
-    }
+    });
 }
 
 fn read_clip(path: &Path) -> Option<ClipPayload> {
@@ -1384,7 +1493,7 @@ fn load_model(config_path: PathBuf) -> Model {
 
     if let Some(saved) = persisted {
         model.settings = saved.settings;
-        model.settings.font_size = model.settings.font_size.clamp(2.0, 72.0);
+        model.settings.font_size = model.settings.font_size.clamp(10.0, 72.0);
         model.settings.combo_color = model.settings.font_color.clone();
         model.settings.opacity = model.settings.opacity.clamp(0.2, 1.0);
         model.settings.rate = model.settings.rate.clamp(0.5, 2.0);
@@ -1827,7 +1936,7 @@ fn set_capture(app: AppHandle, locked: bool) {
 
 #[tauri::command]
 fn set_font_size(app: AppHandle, font_size: f64) {
-    let font_size = font_size.clamp(2.0, 72.0);
+    let font_size = font_size.clamp(10.0, 72.0);
     let height = {
         let state = app.state::<Mutex<Model>>();
         let mut model = lock(&state);
@@ -2600,6 +2709,9 @@ fn unix_days_to_ymd(days: i64) -> (i64, i64, i64) {
 
 #[tauri::command]
 fn set_voice(app: AppHandle, voice_id: Option<String>) {
+    if let Some(hub) = app.try_state::<TtsSpeakHub>() {
+        hub.clear();
+    }
     {
         let state = app.state::<Mutex<Model>>();
         let mut model = lock(&state);
@@ -2613,6 +2725,9 @@ fn set_voice(app: AppHandle, voice_id: Option<String>) {
 #[tauri::command]
 fn set_tts_engine(app: AppHandle, engine: String) -> Result<Snapshot, String> {
     let engine = tts_providers::normalize_engine(&engine);
+    if let Some(hub) = app.try_state::<TtsSpeakHub>() {
+        hub.clear();
+    }
     {
         let state = app.state::<Mutex<Model>>();
         let mut model = lock(&state);
@@ -2687,6 +2802,9 @@ fn remove_piper_voice(app: AppHandle, id: String) -> Result<(), String> {
 
 #[tauri::command]
 fn set_rate(app: AppHandle, rate: f32) {
+    if let Some(hub) = app.try_state::<TtsSpeakHub>() {
+        hub.clear();
+    }
     {
         let state = app.state::<Mutex<Model>>();
         let mut model = lock(&state);
@@ -3353,6 +3471,7 @@ pub fn run() {
     tauri::Builder::default()
         .manage(Mutex::new(load_model(PathBuf::new())))
         .manage(TtsEngine::start())
+        .manage(TtsSpeakHub::new())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(

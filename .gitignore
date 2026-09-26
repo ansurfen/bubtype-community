@@ -14,6 +14,11 @@ dist-ssr
 .env
 .env.*
 !.env.example
+workers/**/.dev.vars
+workers/**/.wrangler/
+workers/**/FILL_ME.txt
+workers/**/LIVE_FILL_ME.txt
+
 
 # License issuer private key — never commit
 scripts/secrets/

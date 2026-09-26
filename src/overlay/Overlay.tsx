@@ -5,6 +5,7 @@ import {
   faBookmark,
   faChevronLeft,
   faChevronRight,
+  faCopy,
   faMagnifyingGlass,
   faRotateRight,
   faTableColumns,
@@ -155,7 +156,7 @@ export default function Overlay() {
 
   const PAD_X = 12;
   const PAD_Y = 4;
-  const FONT_MIN = 2;
+  const FONT_MIN = 10;
   const FONT_MAX = 72;
 
   function clampFont(font: number) {
@@ -353,6 +354,9 @@ export default function Overlay() {
     await packToContent(force);
   }
 
+  const applyFontAndPackRef = useRef(applyFontAndPack);
+  applyFontAndPackRef.current = applyFontAndPack;
+
   useEffect(() => {
     warmKeySounds();
     warmComboSounds();
@@ -444,6 +448,26 @@ export default function Overlay() {
   useEffect(() => {
     if (snap) fontRef.current = snap.settings.fontSize;
   }, [snap?.settings.fontSize]);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || !snap) return;
+    const onWheel = (event: WheelEvent) => {
+      if (event.deltaY === 0) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const steps = Math.max(1, Math.min(4, Math.round(Math.abs(event.deltaY) / 40)));
+      const dir = event.deltaY > 0 ? -1 : 1;
+      const cur = fontRef.current;
+      const next = Math.round(
+        Math.min(FONT_MAX, Math.max(FONT_MIN, cur + dir * steps * 2)),
+      );
+      if (next === Math.round(Math.min(FONT_MAX, Math.max(FONT_MIN, cur)))) return;
+      void applyFontAndPackRef.current(next);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [snap]);
 
   useEffect(() => {
     const sentence = snap?.items[snap.index]?.text ?? "";
@@ -1037,6 +1061,16 @@ export default function Overlay() {
     runTool(id);
   }
 
+  async function copyCurrentText() {
+    const value = text.trim();
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      /* ignore — no permission / non-secure context */
+    }
+  }
+
   function runTool(id: ToolbarId | "hint" | "hide") {
     if (id === "panel") {
       void invoke("show_panel");
@@ -1063,6 +1097,10 @@ export default function Overlay() {
     }
     if (id === "replay") {
       void invoke("repeat_speak");
+      return;
+    }
+    if (id === "copy") {
+      void copyCurrentText();
       return;
     }
     if (id === "rate") {
@@ -1094,6 +1132,7 @@ export default function Overlay() {
         await MenuItem.new({ id: "prev", text: t("tool.prev"), action: act("prev") }),
         await MenuItem.new({ id: "next", text: t("tool.next"), action: act("next") }),
         await MenuItem.new({ id: "replay", text: t("tool.replay"), action: act("replay") }),
+        await MenuItem.new({ id: "copy", text: t("tool.copy"), action: act("copy") }),
         await PredefinedMenuItem.new({ item: "Separator" }),
         await CheckMenuItem.new({
           id: "hint",
@@ -1220,6 +1259,20 @@ export default function Overlay() {
         </button>
       );
     }
+    if (id === "copy") {
+      return (
+        <button
+          key={id}
+          type="button"
+          className="tool"
+          title={t("tool.copy")}
+          aria-label={t("tool.copy")}
+          onPointerDown={(event) => onTool("copy", event)}
+        >
+          <FontAwesomeIcon icon={faCopy} />
+        </button>
+      );
+    }
     if (id === "rate") {
       const label = t("tool.rate", { rate: formatRate(settings.rate || 1) });
       return (
@@ -1300,6 +1353,9 @@ export default function Overlay() {
           ["--frame" as string]: /^#[0-9a-fA-F]{6}$/i.test(frameColor)
             ? frameColor
             : "#ff4d6d",
+          ["--theme" as string]:
+            skinInk?.accent ??
+            (snap.settings.fontColor || defaultComboTheme),
         } as React.CSSProperties
       }
       tabIndex={0}

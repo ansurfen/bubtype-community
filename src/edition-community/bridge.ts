@@ -54,7 +54,10 @@ export function subscribeEntitlement(_cb: () => void): () => void {
   return () => {};
 }
 
-export async function activateLicense(_key: string): Promise<ActivateResult> {
+export async function activateLicense(
+  _key: string,
+  _email?: string,
+): Promise<ActivateResult> {
   return { ok: false, message: "Community build has no license unlock." };
 }
 

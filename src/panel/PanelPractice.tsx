@@ -6,6 +6,7 @@ import {
   faChevronDown,
   faChevronLeft,
   faChevronRight,
+  faCopy,
   faLanguage,
   faRotateRight,
   faVolumeHigh,
@@ -409,6 +410,7 @@ export default function PanelPractice({ snap, t, onExit, onOpenPacks, onOpenItem
 
   const ctxItems: ContextMenuItem[] = [
     { type: "item", id: "replay", label: t("ctx.replay") },
+    { type: "item", id: "copy", label: t("tool.copy") },
     { type: "sep" },
     { type: "item", id: "hint", label: t("practice.hint"), checked: showHint },
     {
@@ -437,6 +439,15 @@ export default function PanelPractice({ snap, t, onExit, onOpenPacks, onOpenItem
     },
   ];
 
+  async function copyCurrentText() {
+    const value = text.trim();
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      /* ignore */
+    }
+  }
   return (
     <div
       ref={rootRef}
@@ -555,6 +566,19 @@ export default function PanelPractice({ snap, t, onExit, onOpenPacks, onOpenItem
               }}
             >
               <FontAwesomeIcon icon={faRotateRight} />
+            </button>
+            <button
+              type="button"
+              className="panel-practice-tool"
+              title={t("tool.copy")}
+              aria-label={t("tool.copy")}
+              onClick={(event) => {
+                event.stopPropagation();
+                bumpIdle();
+                void copyCurrentText();
+              }}
+            >
+              <FontAwesomeIcon icon={faCopy} />
             </button>
             <button
               type="button"
@@ -773,6 +797,7 @@ export default function PanelPractice({ snap, t, onExit, onOpenPacks, onOpenItem
           onClose={() => setCtxMenu(null)}
           onPick={(id) => {
             if (id === "replay") void invoke("repeat_speak");
+            else if (id === "copy") void copyCurrentText();
             else if (id === "hint") void invoke("set_show_hint", { show: !showHint });
             else if (id === "lookup")
               void invoke("set_word_lookup", { enabled: !wordLookup });
