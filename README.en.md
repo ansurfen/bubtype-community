@@ -69,7 +69,7 @@ Community is the open-source build. Free / Pro on the website are commercial bui
 | Excel examples & PDF export | — | — | Yes |
 | License unlock | — | Upgrade to Pro | Active |
 
-Learn more: [bubtype.com](https://bubtype.com)
+Learn more: [bubtype.com/about/](https://bubtype.com/about/)
 
 ## Develop
 

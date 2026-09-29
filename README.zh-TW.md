@@ -69,7 +69,7 @@ Community 為獨立開源建置；官網 Free / Pro 為商業發行版，細節�
 | Excel 例句與 PDF 匯出 | — | — | 支援 |
 | 授權啟用 | 無 | 可升級為 Pro | 已啟用 |
 
-了解更多：[bubtype.com](https://bubtype.com)
+了解更多：[bubtype.com/about/](https://bubtype.com/about/)
 
 ## 本地開發
 

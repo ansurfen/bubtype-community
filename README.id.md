@@ -69,7 +69,7 @@ Community adalah build OSS. Free / Pro di situs adalah build komersial.
 | Excel contoh & PDF | — | — | Ya |
 | Buka lisensi | — | Naik ke Pro | Aktif |
 
-Selengkapnya: [bubtype.com](https://bubtype.com)
+Fakta produk: [bubtype.com/about/](https://bubtype.com/about/)
 
 ## Pengembangan
 

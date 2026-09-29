@@ -69,7 +69,7 @@ Community 是独立开源构建；官网安装的 Free / Pro 为商业发行版�
 | Excel 例句与 PDF 导出 | — | — | 支持 |
 | 许可证激活 | 无 | 可升级为 Pro | 已激活 |
 
-了解更多：[bubtype.com](https://bubtype.com)
+了解更多：[bubtype.com/about/](https://bubtype.com/about/)
 
 ## 本地开发
 

@@ -69,7 +69,7 @@ Community là bản OSS. Free / Pro trên website là bản thương mại.
 | Excel ví dụ & PDF | — | — | Có |
 | Mở khóa giấy phép | — | Lên Pro | Đã mở |
 
-Tìm hiểu thêm: [bubtype.com](https://bubtype.com)
+Thông tin sản phẩm: [bubtype.com/about/](https://bubtype.com/about/)
 
 ## Phát triển
 

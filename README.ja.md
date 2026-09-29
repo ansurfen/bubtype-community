@@ -69,7 +69,7 @@ Community は OSS ビルド。サイトの Free / Pro は商用版です。
 | 例文 Excel / PDF | — | — | ○ |
 | ライセンス解除 | — | Pro へ | 有効 |
 
-詳細：[bubtype.com](https://bubtype.com)
+詳細：[bubtype.com/about/](https://bubtype.com/about/)
 
 ## 開発
 
